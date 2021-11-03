@@ -261,7 +261,11 @@ const flagData = {
   "🇾🇹": "Mayotte",
   "🇿🇦": "South Africa",
   "🇿🇲": "Zambia",
-  "🇿🇼": "Zimbabwe"
+  "🇿🇼": "Zimbabwe",
+  "🏴󠁧󠁢󠁥󠁮󠁧󠁿": "England",
+  "🏴󠁧󠁢󠁳󠁣󠁴󠁿": "Scotland",
+  "🏴󠁧󠁢󠁷󠁬󠁳󠁿": "Wales",
+  "🏴󠁵󠁳󠁴󠁸󠁿": "Texas (US-TX)"
 };
 const flagArr = Object.keys(flagData);
 
@@ -299,7 +303,8 @@ export default function App() {
         return (
           <span
             onClick={() => onClickEvent(flag)}
-            style={{ padding: "1rem", cursor: "pointer", fontSize: "1.6rem" }}
+            style={{ padding: "1rem", cursor: "pointer", fontSize: "2rem" }}
+            key={flag}
           >
             {flag}
           </span>
