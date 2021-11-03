@@ -291,25 +291,28 @@ export default function App() {
       <h1 style={{ color: "gray" }}>Flag Search</h1>
       <input
         onChange={onChangeEvent}
-        placeholder="which flag you want to search?"
+        placeholder="drop or select flag from below to search..."
       ></input>
       <br />
       <br />
       {meaning}
       <br />
       <br />
+      <hr />
       <h3>Our database</h3>
-      {flagArr.map(function (flag) {
-        return (
-          <span
-            onClick={() => onClickEvent(flag)}
-            style={{ padding: "1rem", cursor: "pointer", fontSize: "2rem" }}
-            key={flag}
-          >
-            {flag}
-          </span>
-        );
-      })}
+      <div className="div">
+        {flagArr.map(function (flag) {
+          return (
+            <span
+              onClick={() => onClickEvent(flag)}
+              style={{ padding: "1rem", cursor: "pointer", fontSize: "2rem" }}
+              key={flag}
+            >
+              {flag}
+            </span>
+          );
+        })}
+      </div>
     </div>
   );
 }
