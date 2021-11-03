@@ -3,7 +3,7 @@ import "./styles.css";
 
 const flagData = {
   "🏳️‍🌈": "Rainbow Flag",
-  "🏴️": "Pirate Flag",
+  "🏴‍☠️": "Pirate Flag",
   "🇦🇨": "Ascension Island",
   "🇦🇩": "Andorra",
   "🇦🇪": "United Arab Emirates",
@@ -263,12 +263,48 @@ const flagData = {
   "🇿🇲": "Zambia",
   "🇿🇼": "Zimbabwe"
 };
+const flagArr = Object.keys(flagData);
 
 export default function App() {
+  const [meaning, meaningSetter] = useState("");
+
+  function onChangeEvent(event) {
+    const userInput = event.target.value;
+    var meaning = flagData[userInput];
+    if (meaning === undefined) {
+      meaning = "We don't have this in our database, please try again.";
+    }
+    meaningSetter(meaning);
+  }
+
+  function onClickEvent(flag) {
+    var meaning = flagData[flag];
+    meaningSetter(meaning);
+  }
+
   return (
     <div className="App">
       <h1 style={{ color: "gray" }}>Flag Search</h1>
-      <input placeholder="which flag you want to search?"></input>
+      <input
+        onChange={onChangeEvent}
+        placeholder="which flag you want to search?"
+      ></input>
+      <br />
+      <br />
+      {meaning}
+      <br />
+      <br />
+      <h3>Our database</h3>
+      {flagArr.map(function (flag) {
+        return (
+          <span
+            onClick={() => onClickEvent(flag)}
+            style={{ padding: "1rem", cursor: "pointer", fontSize: "1.6rem" }}
+          >
+            {flag}
+          </span>
+        );
+      })}
     </div>
   );
 }
